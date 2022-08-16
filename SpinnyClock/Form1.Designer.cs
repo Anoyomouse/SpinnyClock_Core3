@@ -36,7 +36,7 @@
 
             this.timTick.Enabled = true;
             this.timTick.Interval = 50;
-            this.timTick.Tick += new System.EventHandler(this.timTick_Tick);
+            this.timTick.Tick += new System.EventHandler(this.TimerTick);
 
 
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -53,7 +53,7 @@
             this.cmdExit.Size = new System.Drawing.Size(76, 25);
             this.cmdExit.TabIndex = 5;
             this.cmdExit.Text = "Exit";
-            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
+            this.cmdExit.Click += new System.EventHandler(this.ExitButtonClick);
 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

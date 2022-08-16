@@ -16,7 +16,6 @@ namespace SpinnyClock
     public partial class Form1 : Form
     {
         private List<TimeItem> lst;
-        private List<Button> butRem;
 
         public Form1()
         {
@@ -26,7 +25,7 @@ namespace SpinnyClock
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
         }
 
-        private void timTick_Tick(object sender, EventArgs e)
+        private void TimerTick(object sender, EventArgs e)
         {
             this.Refresh();
         }
@@ -34,12 +33,11 @@ namespace SpinnyClock
         private void Form1_Load(object sender, EventArgs e)
         {
             lst = new List<TimeItem>();
-            butRem = new List<Button>();
 
-            FileInfo f = new FileInfo("data.xml");
+            FileInfo f = new("data.xml");
             if (!f.Exists)
             {
-                StreamWriter write = new StreamWriter("data.xml");
+                StreamWriter write = new("data.xml");
                 write.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
                 write.WriteLine("<root>");
                 write.WriteLine("	<time name=\"Anoyomouse\" offset=\"+2\" dst=\"False\" />");
@@ -48,7 +46,7 @@ namespace SpinnyClock
                 write.Close();
             }
 
-            XPathDocument doc = new XPathDocument("data.xml");
+            XPathDocument doc = new("data.xml");
 
             XPathNavigator nav = doc.CreateNavigator();
             nav.MoveToNext();
@@ -98,15 +96,15 @@ namespace SpinnyClock
             }
             DrawStuff.DrawHatchedBackground(g, this.ClientSize.Width, this.ClientSize.Height, 10, lg, ng, dg);
 
-            Pen p = new Pen(Color.FromArgb(255, 14, 65, 0), 6);
+            Pen p = new(Color.FromArgb(255, 14, 65, 0), 6);
 
             DrawStuff.DrawArcBorder(g, this.ClientSize.Width, this.ClientSize.Height, 3, p);
 
-            p = new Pen(Color.Goldenrod, 2);
+            p = new(Color.Goldenrod, 2);
 
             DrawStuff.DrawArcBorder(g, this.ClientSize.Width, this.ClientSize.Height, 0, p);
 
-            Font fnt = new System.Drawing.Font("MS Sans Serif", 8.0F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+            Font fnt = new ("MS Sans Serif", 8.0F, FontStyle.Regular, GraphicsUnit.Point, 0);
 
             DateTime now = DateTime.Now;
             int i = 0;
@@ -136,7 +134,7 @@ namespace SpinnyClock
             e.Graphics.DrawImage(bmp, 0, 0);
         }
 
-        private void DrawSpinnyClock(Graphics g, DateTime now, int left, int top)
+        private static void DrawSpinnyClock(Graphics g, DateTime now, int left, int top)
         {
             float x, y;
             double theta;
@@ -222,7 +220,7 @@ namespace SpinnyClock
             bDragging = false;
         }
 
-        private void cmdExit_Click(object sender, EventArgs e)
+        private void ExitButtonClick(object sender, EventArgs e)
         {
             Application.Exit();
         }
