@@ -4,12 +4,12 @@ namespace SpinnyClock
 {
     internal class DSTTime
     {
-        DateTime dstStart;
-        DateTime dstEnd;
+        private readonly DateTime dstStart;
+        private readonly DateTime dstEnd;
 
         protected DSTTime()
         {
-            DateTime date = new DateTime(DateTime.Now.Year, 4, 1);
+            DateTime date = new(DateTime.Now.Year, 4, 1);
             while (date.DayOfWeek != DayOfWeek.Sunday)
                 date = date.AddDays(1);
 
