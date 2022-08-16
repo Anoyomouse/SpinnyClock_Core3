@@ -22,6 +22,7 @@ namespace SpinnyClock
         {
             InitializeComponent();
 
+            this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
         }
 
